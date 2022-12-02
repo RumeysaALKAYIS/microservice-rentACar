@@ -1,0 +1,30 @@
+package com.kodlama.inventoryService.entities;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name="cars")
+public class Car {
+	@Id
+	@Column(name = "id")
+private String id;
+	@Column(name = "dailyprice")
+private double dailyPrice;
+	@Column(name = "modelyear")
+private int modelYear;
+@Column(name = "plate")
+private String plate;
+@Column(name = "state")
+private int state;
+
+}

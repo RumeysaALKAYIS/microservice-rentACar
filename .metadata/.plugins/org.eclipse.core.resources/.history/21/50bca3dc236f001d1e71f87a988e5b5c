@@ -1,0 +1,8 @@
+package com.kodlama.inventoryService.entities;
+
+public class Car {
+private String id;
+private double dailyPrice;
+private int modelYear;
+private String plate;
+}

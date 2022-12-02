@@ -1,0 +1,43 @@
+package com.kodlama.rentalservice.api.controller;
+
+import java.util.List;
+
+import javax.validation.Valid;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.kodlama.rentalservice.business.abstracts.RentalServices;
+import com.kodlama.rentalservice.business.requests.CreateRentalRequest;
+import com.kodlama.rentalservice.business.requests.UpdateRentalRequest;
+import com.kodlama.rentalservice.business.responses.CreateRentalResponse;
+import com.kodlama.rentalservice.business.responses.GetAllRentalResponse;
+import com.kodlama.rentalservice.business.responses.UpdateRentalResponse;
+
+import lombok.AllArgsConstructor;
+
+@RestController
+@RequestMapping("/api/rentals")
+@AllArgsConstructor
+public class RentalController {
+
+private RentalServices rentalServices;
+	
+	@PostMapping()
+	CreateRentalResponse add(@Valid @RequestBody CreateRentalRequest createRentalRequest) {
+		return this.rentalServices.add(createRentalRequest);
+	}
+	@GetMapping()
+	public List<GetAllRentalResponse>  getAll(){
+		return this.rentalServices.getAll();
+	}
+	
+	@PutMapping
+	UpdateRentalResponse update(@Valid @RequestBody UpdateRentalRequest updateRentalRequest) {
+		return this.rentalServices.update(updateRentalRequest);
+	}
+}

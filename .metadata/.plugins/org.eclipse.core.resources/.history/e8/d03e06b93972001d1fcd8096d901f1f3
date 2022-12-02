@@ -1,0 +1,59 @@
+package com.kodlama.inventoryService.wepApi.controller;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.kodlama.inventoryService.business.abstracts.CarService;
+import com.kodlama.inventoryService.business.requeses.creates.CreateCarRequest;
+import com.kodlama.inventoryService.business.requeses.updates.UpdateCarRequest;
+import com.kodlama.inventoryService.business.responses.create.CreateCarResponse;
+import com.kodlama.inventoryService.business.responses.get.GetAllCarsResponse;
+import com.kodlama.inventoryService.business.responses.update.UpdateCarResponse;
+
+import lombok.AllArgsConstructor;
+
+@RestController
+@RequestMapping("/api/cars")
+@AllArgsConstructor
+public class CarController {
+	
+	private CarService carService;
+	
+	@GetMapping()
+	public List<GetAllCarsResponse> getAll(){
+		return this.carService.getAll();
+	}
+	@PostMapping()
+	public CreateCarResponse add(@RequestBody CreateCarRequest createCarRequest) {
+		return this.carService.add(createCarRequest);
+	}
+	
+	@PutMapping()
+	public UpdateCarResponse update(@RequestBody UpdateCarRequest updateCarRequest) {
+		return this.carService.update(updateCarRequest);
+	}
+	@GetMapping("/{id}")
+	public GetAllCarsResponse getbyId(@PathVariable String id) {
+		return this.carService.getbyId(id);
+	}
+	
+	@DeleteMapping("/{id}")
+	void delete(@PathVariable String id) {
+		this.carService.delete(id);
+	}
+	
+	@GetMapping("/{id}")
+	void checkIfCar(@PathVariable String id) {
+		this.carService.checkIfCar(id);
+	}
+	
+
+}

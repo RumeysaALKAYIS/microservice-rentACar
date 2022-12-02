@@ -1,0 +1,9 @@
+package com.kodlama.inventoryService.dataAccess;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.kodlama.inventoryService.entities.Car;
+
+public interface CarRepository extends JpaRepository<Car, String> {
+
+}

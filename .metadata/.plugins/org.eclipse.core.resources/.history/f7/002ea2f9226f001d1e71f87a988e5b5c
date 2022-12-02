@@ -1,0 +1,20 @@
+package com.kodlama.inventoryService.entities;
+
+import javax.persistence.*;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name="brans")
+public class Brand {
+	
+	@Id
+	@Column(name)
+	private String name;
+
+}

@@ -1,0 +1,13 @@
+package com.kodlama.inventoryService.business.abstracts;
+
+import java.util.List;
+
+import com.kodlama.inventoryService.business.requeses.creates.CreateBrandRequest;
+import com.kodlama.inventoryService.business.responses.create.CreateBrandResponse;
+import com.kodlama.inventoryService.business.responses.get.GetAllBrandResponse;
+
+public interface BrandService {
+	List<GetAllBrandResponse> getAll();
+
+	CreateBrandResponse add(CreateBrandRequest createBrandRequest);
+}

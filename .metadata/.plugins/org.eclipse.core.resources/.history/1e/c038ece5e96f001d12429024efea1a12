@@ -1,0 +1,5 @@
+package com.kodlama.inventoryService.business.requeses.updates;
+
+public class UpdateModelRequest {
+
+}

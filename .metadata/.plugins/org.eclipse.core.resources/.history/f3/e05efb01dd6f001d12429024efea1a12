@@ -1,0 +1,31 @@
+package com.kodlama.inventoryService.business.concretes;
+
+import java.util.List;
+
+import com.kodlama.inventoryService.business.abstracts.BrandService;
+import com.kodlama.inventoryService.business.requeses.creates.CreateBrandRequest;
+import com.kodlama.inventoryService.business.responses.create.CreateBrandResponse;
+import com.kodlama.inventoryService.business.responses.get.GetAllBrandResponse;
+import com.kodlama.inventoryService.dataAccess.BrandRepository;
+
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
+public class BrandManager implements BrandService {
+
+	private BrandRepository brandRepository;
+	
+	@Override
+	public List<GetAllBrandResponse> getAll() {
+		this.brandRepository.findAll();
+
+		return null;
+	}
+
+	@Override
+	public CreateBrandResponse add(CreateBrandRequest createBrandRequest) {
+		
+		return null;
+	}
+
+}

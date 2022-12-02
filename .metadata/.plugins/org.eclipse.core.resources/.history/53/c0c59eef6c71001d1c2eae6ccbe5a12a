@@ -1,0 +1,5 @@
+package com.kodlama.rentalservice.business.api;
+
+public class RentalController {
+
+}

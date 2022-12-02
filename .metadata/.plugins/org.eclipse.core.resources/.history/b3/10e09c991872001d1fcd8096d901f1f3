@@ -1,0 +1,5 @@
+package com.kodlama.inventoryService.kafka;
+
+public class UpdateRentalConsumer {
+
+}

@@ -1,0 +1,22 @@
+package com.kodlama.inventoryService.business.abstracts;
+
+import java.util.List;
+
+import com.kodlama.inventoryService.business.requeses.creates.CreateCarRequest;
+import com.kodlama.inventoryService.business.requeses.updates.UpdateCarRequest;
+import com.kodlama.inventoryService.business.responses.create.CreateCarResponse;
+import com.kodlama.inventoryService.business.responses.get.GetAllCarsResponse;
+import com.kodlama.inventoryService.business.responses.update.UpdateCarResponse;
+
+public interface CarService {
+
+	List<GetAllCarsResponse> getAll();
+
+	CreateCarResponse add(CreateCarRequest createCarRequest);
+
+	UpdateCarResponse update(UpdateCarRequest updateCarRequest);
+
+	GetAllCarsResponse getbyId(String id);
+
+	void delete(String id);
+}

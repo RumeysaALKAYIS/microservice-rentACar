@@ -1,0 +1,5 @@
+package com.kodlama.common.utilities.mapping;
+
+public class ModelMapperManager {
+
+}

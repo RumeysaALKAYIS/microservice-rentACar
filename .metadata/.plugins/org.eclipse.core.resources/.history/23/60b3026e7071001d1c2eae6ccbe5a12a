@@ -1,0 +1,42 @@
+package com.kodlama.rentalservice.business.concretes;
+
+import java.util.List;
+import java.util.UUID;
+
+import org.springframework.stereotype.Service;
+
+import com.kodlama.common.utilities.mapping.ModelMapperService;
+import com.kodlama.rentalservice.business.abstracts.RentalServices;
+import com.kodlama.rentalservice.business.requests.CreateRentalRequest;
+import com.kodlama.rentalservice.business.responses.CreateRentalResponse;
+import com.kodlama.rentalservice.business.responses.GetAllResponse;
+import com.kodlama.rentalservice.dataAccess.RentalRepository;
+import com.kodlama.rentalservice.entities.Rental;
+
+import lombok.AllArgsConstructor;
+
+@Service
+@AllArgsConstructor
+public class RentalManager implements RentalServices {
+
+	private RentalRepository rentalRepository;
+	private ModelMapperService modelService;
+
+	@Override
+	public CreateRentalResponse add(CreateRentalRequest createRentalRequest) {
+
+		Rental rental = this.modelService.forRequest().map(createRentalRequest, Rental.class);
+		rental.setId(UUID.randomUUID().toString());
+		this.rentalRepository.save(rental);
+		CreateRentalResponse createRentalResponse = this.modelService.forResponse().map(rental,
+				CreateRentalResponse.class);
+		return createRentalResponse;
+	}
+
+	@Override
+	public List<GetAllResponse>  gelAll() {
+		
+		return null;
+	}
+
+}

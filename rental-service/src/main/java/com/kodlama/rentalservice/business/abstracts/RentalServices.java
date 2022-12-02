@@ -1,0 +1,21 @@
+package com.kodlama.rentalservice.business.abstracts;
+
+import java.util.List;
+
+import com.kodlama.rentalservice.business.requests.CreateRentalRequest;
+import com.kodlama.rentalservice.business.requests.UpdateRentalRequest;
+import com.kodlama.rentalservice.business.responses.CreateRentalResponse;
+import com.kodlama.rentalservice.business.responses.GetAllRentalResponse;
+import com.kodlama.rentalservice.business.responses.UpdateRentalResponse;
+
+public interface RentalServices {
+
+	List<GetAllRentalResponse> getAll();
+
+	CreateRentalResponse add(CreateRentalRequest createRentalRequest);
+	
+	UpdateRentalResponse update(UpdateRentalRequest updateRentalRequest);
+	
+	
+
+}

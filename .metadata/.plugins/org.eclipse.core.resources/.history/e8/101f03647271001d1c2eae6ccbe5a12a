@@ -1,0 +1,15 @@
+package com.kodlama.rentalservice.business.abstracts;
+
+import java.util.List;
+
+import com.kodlama.rentalservice.business.requests.CreateRentalRequest;
+import com.kodlama.rentalservice.business.responses.CreateRentalResponse;
+import com.kodlama.rentalservice.business.responses.GetAllRentalResponse;
+
+public interface RentalServices {
+
+	List<GetAllRentalResponse> gelAll();
+
+	CreateRentalResponse add(CreateRentalRequest createRentalRequest);
+
+}

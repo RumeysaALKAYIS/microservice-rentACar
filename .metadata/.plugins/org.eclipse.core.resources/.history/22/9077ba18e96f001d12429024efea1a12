@@ -1,0 +1,14 @@
+package com.kodlama.inventoryService.business.responses.create;
+
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+public class CreateCarResponse {
+	private String id;
+	private double dailyPrice;
+	private int modelYear;
+	private int state;
+	private String modelId;
+}

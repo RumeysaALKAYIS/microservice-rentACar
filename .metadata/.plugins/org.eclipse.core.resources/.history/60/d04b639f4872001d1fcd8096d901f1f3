@@ -1,0 +1,5 @@
+package com.kodlama.inventoryService.business.responses.update;
+
+public class UpdateStateCarResponse {
+
+}

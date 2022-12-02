@@ -1,0 +1,5 @@
+package com.kodlama.common.events;
+
+public class RentalCreatedEvent {
+
+}

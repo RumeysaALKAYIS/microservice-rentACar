@@ -1,0 +1,75 @@
+package com.kodlama.inventoryService.kafka;
+
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.stereotype.Service;
+
+import com.kodlama.common.events.RentalCreatedEvent;
+import com.kodlama.common.events.RentalUptadetEvent;
+import com.kodlama.common.utilities.mapping.ModelMapperService;
+import com.kodlama.inventoryService.business.abstracts.CarService;
+import com.kodlama.inventoryService.business.requeses.updates.UpdateCarRequest;
+import com.kodlama.inventoryService.business.responses.get.GetAllBrandResponse;
+import com.kodlama.inventoryService.business.responses.get.GetAllCarsResponse;
+import com.kodlama.inventoryService.entities.Car;
+
+
+@Service
+public class RentalConsumer {
+	private static final Logger LOGGER = LoggerFactory.getLogger(RentalConsumer.class);
+	private CarService carService;
+	private ModelMapperService mapperService;
+
+    @KafkaListener(
+            topics = "${spring.kafka.topic.name}"
+            ,groupId = "${spring.kafka.consumer.group-id}"
+    )
+    public void consume(RentalCreatedEvent event){
+        LOGGER.info(String.format("Rental Create event received in stock service  => %s", event.toString()));
+
+        // save the order event into the database
+    }
+    
+    @KafkaListener(
+            topics = "${spring.kafka.topic.name}"
+            ,groupId = "${spring.kafka.consumer.group-id}"
+    )
+    public void consume(RentalUptadetEvent event){
+        LOGGER.info(String.format("Rental Uptadet event received in stock service  => %s", event.toString()));
+
+        //1. ExCar 
+      
+        GetAllCarsResponse extCarResponse= this.carService.getbyId(event.getExtCarId());
+        Car extCar= this.mapperService.forResponse().map(extCarResponse, Car.class);
+        
+        UpdateCarRequest extCarRequest=new UpdateCarRequest();
+        extCarRequest.setId(event.getExtCarId());
+        extCarRequest.setDailyPrice(extCar.getDailyPrice());
+        extCarRequest.setModelId(extCar.getModel().getId());
+        extCarRequest.setModelYear(extCar.getModelYear());
+        extCarRequest.setState(0);//Boşta
+       
+        this.carService.update(extCarRequest);
+        
+        
+        //2. NewCar
+        
+        GetAllCarsResponse newCarResponse= this.carService.getbyId(event.getNewCarId());
+        Car newCar= this.mapperService.forResponse().map(newCarResponse, Car.class);
+        
+        UpdateCarRequest newCarRequest=new UpdateCarRequest();
+        newCarRequest.setId(event.getNewCarId());
+        newCarRequest.setDailyPrice(newCar.getDailyPrice());
+        newCarRequest.setModelId(newCar.getModel().getId());
+        newCarRequest.setModelYear(newCar.getModelYear());
+        newCarRequest.setState(1);//Kirada
+        
+        this.carService.update(newCarRequest);
+        
+        
+        //Car Id değişmiş olduğunu ogrendik veri tabanındaki değerini düzelticez
+        
+    }
+}

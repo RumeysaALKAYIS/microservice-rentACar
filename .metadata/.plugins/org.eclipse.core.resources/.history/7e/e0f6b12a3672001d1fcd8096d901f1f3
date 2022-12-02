@@ -1,0 +1,8 @@
+package com.kodlama.rentalservice.configurations.feign;
+
+public interface OpenFeignService {
+
+	void canCarBeUsed() {
+		
+	}
+}

@@ -1,0 +1,36 @@
+package com.kodlama.inventoryService.wepApi.controller;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.kodlama.inventoryService.business.abstracts.BrandService;
+import com.kodlama.inventoryService.business.requeses.creates.CreateBrandRequest;
+import com.kodlama.inventoryService.business.requeses.updates.UpdateBrandRequest;
+import com.kodlama.inventoryService.business.responses.create.CreateBrandResponse;
+import com.kodlama.inventoryService.business.responses.get.GetAllBrandResponse;
+import com.kodlama.inventoryService.business.responses.update.UpdateBrandResponse;
+
+import lombok.AllArgsConstructor;
+
+@RestController
+@RequestMapping("/api/brands")
+@AllArgsConstructor
+public class BrandController {
+	private BrandService brandService;
+	@GetMapping()
+	public List<GetAllBrandResponse> getAll(){
+		
+	}
+
+	CreateBrandResponse add(CreateBrandRequest createBrandRequest);
+
+	UpdateBrandResponse update(UpdateBrandRequest updateBrandRequest);
+	
+	GetAllBrandResponse getbyId(String id);
+	
+	void delete(String id);
+
+}

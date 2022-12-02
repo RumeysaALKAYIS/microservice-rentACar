@@ -1,0 +1,12 @@
+package com.kodlama.rentalservice.business.requests;
+
+import java.time.LocalDateTime;
+
+public class CreateRentalRequest {
+
+	private String carId;
+	private LocalDateTime dateStarted;
+	private int rentedForDays;
+	private double dailyPrice;
+	private double totalPrice;
+}
