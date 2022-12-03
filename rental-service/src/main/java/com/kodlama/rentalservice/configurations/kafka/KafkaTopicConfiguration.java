@@ -7,11 +7,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.TopicBuilder;
 
 
-
 @Configuration
 public class KafkaTopicConfiguration {
-	@Value("${spring.kafka.topic.name}")
 	
+	@Value("${spring.kafka.topic.name}")
 	private String topicName;
 	
 	@Bean

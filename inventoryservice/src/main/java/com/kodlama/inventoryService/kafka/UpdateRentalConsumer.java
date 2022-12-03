@@ -24,7 +24,7 @@ public class UpdateRentalConsumer {
 		LOGGER.info(String.format("Rental Uptadet event received in stock service  => %s", event.toString()));
 
 		UpdateStateCarRequest carRequest = new UpdateStateCarRequest();
-		carRequest.setId(event.getExtCarId());
+		carRequest.setId(event.getExCarId());
 		carRequest.setState(0);
 
 		this.carService.updateStateCar(carRequest);

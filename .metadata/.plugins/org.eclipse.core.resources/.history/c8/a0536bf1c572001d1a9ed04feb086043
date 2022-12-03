@@ -1,0 +1,18 @@
+package com.kodlama.rentalservice.business.client;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.kodlama.inventoryService.business.responses.get.GetAllCarsResponse;
+
+import feign.Headers;
+
+@FeignClient(value = "car-client",url = "http://localhost:9010/stock/api/cars")
+public class CarServiceClient {
+
+	@RequestMapping(method = RequestMethod.GET, value = "/{id}")
+	@Headers(value = "Content-Type: application/json")
+	public GetAllCarsResponse getbyId(@PathVariable String id) ;
+}

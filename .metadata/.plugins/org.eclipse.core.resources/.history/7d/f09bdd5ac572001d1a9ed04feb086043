@@ -1,0 +1,8 @@
+package com.kodlama.rentalservice.business.client;
+
+import org.springframework.cloud.openfeign.FeignClient;
+
+@FeignClient(value = "car-client",url = "http://localhost:9010/stock/api/cars")
+public class CarServiceClient {
+
+}

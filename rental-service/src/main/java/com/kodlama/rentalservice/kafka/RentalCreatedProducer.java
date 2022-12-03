@@ -11,26 +11,23 @@ import org.springframework.stereotype.Service;
 
 import com.kodlama.common.events.RentalCreatedEvent;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 public class RentalCreatedProducer {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(RentalCreatedProducer.class);
 
 	private NewTopic topic;
 
-	private KafkaTemplate<String, RentalCreatedEvent> kafkaTemplate; // Kafka mesajları hep stringe çeviriyor
-
-	public RentalCreatedProducer(NewTopic topic, KafkaTemplate<String, RentalCreatedEvent> kafkaTemplate) {
-		this.topic = topic;
-		this.kafkaTemplate = kafkaTemplate;
-	}
+	private KafkaTemplate<String, RentalCreatedEvent> kafkaTemplate;
 
 	public void sendMessage(RentalCreatedEvent rentalCreatedEvent) {
 		LOGGER.info(String.format("Rental created event => %s", rentalCreatedEvent.toString()));
 
 		Message<RentalCreatedEvent> message = MessageBuilder.withPayload(rentalCreatedEvent)
 				.setHeader(KafkaHeaders.TOPIC, topic.name()).build();
-
 		kafkaTemplate.send(message);
 	}
 

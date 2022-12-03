@@ -11,5 +11,5 @@ public class RentalUptadetEvent {
 
 	private String message;
 	private String newCarId;
-	private String extCarId;
+	private String exCarId;
 }
