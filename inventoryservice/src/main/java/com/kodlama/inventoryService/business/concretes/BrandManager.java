@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.kodlama.common.utilities.exceptions.BusinessExeption;
 import com.kodlama.common.utilities.mapping.ModelMapperService;
 import com.kodlama.inventoryService.business.abstracts.BrandService;
+import com.kodlama.inventoryService.business.constants.Messages;
 import com.kodlama.inventoryService.business.requeses.creates.CreateBrandRequest;
 import com.kodlama.inventoryService.business.requeses.updates.UpdateBrandRequest;
 import com.kodlama.inventoryService.business.responses.create.CreateBrandResponse;
@@ -31,8 +32,7 @@ public class BrandManager implements BrandService {
 		List<Brand> brands = this.brandRepository.findAll();
 
 		List<GetAllBrandResponse> response = brands.stream()
-				.map(brand -> this.modelMapperService.forResponse()
-						.map(brand, GetAllBrandResponse.class))
+				.map(brand -> this.modelMapperService.forResponse().map(brand, GetAllBrandResponse.class))
 				.collect(Collectors.toList());
 
 		return response;
@@ -42,6 +42,7 @@ public class BrandManager implements BrandService {
 	public CreateBrandResponse add(CreateBrandRequest createBrandRequest) {
 
 		checkIfBrandExistsByName(createBrandRequest.getName());
+
 		Brand brand = this.modelMapperService.forRequest().map(createBrandRequest, Brand.class);
 
 		brand.setId(UUID.randomUUID().toString());
@@ -55,8 +56,8 @@ public class BrandManager implements BrandService {
 
 	@Override
 	public UpdateBrandResponse update(UpdateBrandRequest updateBrandRequest) {
+		checkIfTherIsBrand(updateBrandRequest.getId());
 		Brand brand = this.modelMapperService.forRequest().map(updateBrandRequest, Brand.class);
-		
 		this.brandRepository.save(brand);
 		UpdateBrandResponse brandResponse = this.modelMapperService.forResponse().map(brand, UpdateBrandResponse.class);
 		return brandResponse;
@@ -64,28 +65,32 @@ public class BrandManager implements BrandService {
 
 	@Override
 	public GetAllBrandResponse getbyId(String id) {
-		 
+
 		Brand brand = this.brandRepository.findById(id).get();
 
 		GetAllBrandResponse allBrandResponse = this.modelMapperService.forResponse().map(brand,
 				GetAllBrandResponse.class);
 		return allBrandResponse;
 	}
-	
+
 	@Override
 	public void delete(String id) {
+		checkIfTherIsBrand(id);
 		this.brandRepository.deleteById(id);
-		
-		
 	}
 
 	private void checkIfBrandExistsByName(String name) {
 		Brand currentBrand = this.brandRepository.findByName(name);
 		if (currentBrand != null) {
-			throw new BusinessExeption("BRAND.EXISTS");
+			throw new BusinessExeption(Messages.BrandIsExists);
 		}
 	}
 
-	
+	private void checkIfTherIsBrand(String id) {
+
+		if (!this.brandRepository.existsById(id)) {
+			throw new BusinessExeption(Messages.BrandIsExists);
+		}
+	}
 
 }

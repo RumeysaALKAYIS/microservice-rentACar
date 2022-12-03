@@ -6382,3 +6382,210 @@ java.util.concurrent.TimeoutException
 	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
 	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
 	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.eclipse.ui.ide 4 4 2022-12-03 09:21:20.510
+!MESSAGE Not properly disposed SWT resource
+!STACK 0
+java.lang.Error: SWT Resource was not properly disposed
+	at org.eclipse.swt.graphics.Resource.initNonDisposeTracking(Resource.java:172)
+	at org.eclipse.swt.graphics.Resource.<init>(Resource.java:120)
+	at org.eclipse.swt.graphics.Image.<init>(Image.java:668)
+	at org.eclipse.jface.resource.URLImageDescriptor.createImage(URLImageDescriptor.java:275)
+	at org.eclipse.jface.resource.ImageDescriptor.createImage(ImageDescriptor.java:290)
+	at org.eclipse.jface.resource.ImageDescriptor.createImage(ImageDescriptor.java:268)
+	at org.eclipse.pde.internal.ui.util.SharedLabelProvider.createImage(SharedLabelProvider.java:114)
+	at org.eclipse.pde.internal.ui.util.SharedLabelProvider.get(SharedLabelProvider.java:90)
+	at org.eclipse.pde.internal.ui.util.SharedLabelProvider.get(SharedLabelProvider.java:79)
+	at org.eclipse.pde.internal.ui.correction.java.SearchRepositoriesForIUProposal.getImage(SearchRepositoriesForIUProposal.java:75)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.handleSetData(CompletionProposalPopup.java:900)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:89)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4251)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1066)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1090)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1075)
+	at org.eclipse.swt.widgets.Table.checkData(Table.java:1157)
+	at org.eclipse.swt.widgets.Table.wmNotifyChild(Table.java:6604)
+	at org.eclipse.swt.widgets.Control.wmNotify(Control.java:5799)
+	at org.eclipse.swt.widgets.Composite.wmNotify(Composite.java:1961)
+	at org.eclipse.swt.widgets.Control.WM_NOTIFY(Control.java:5367)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4801)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:340)
+	at org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1478)
+	at org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2284)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5036)
+	at org.eclipse.swt.internal.win32.OS.CallWindowProc(Native Method)
+	at org.eclipse.swt.widgets.Table.callWindowProc(Table.java:588)
+	at org.eclipse.swt.widgets.Table.callWindowProc(Table.java:454)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4846)
+	at org.eclipse.swt.widgets.Table.windowProc(Table.java:5815)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5028)
+	at org.eclipse.swt.internal.win32.OS.CallWindowProc(Native Method)
+	at org.eclipse.swt.widgets.Table.callWindowProc(Table.java:588)
+	at org.eclipse.swt.widgets.Table.callWindowProc(Table.java:454)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4846)
+	at org.eclipse.swt.widgets.Table.windowProc(Table.java:5815)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5028)
+	at org.eclipse.swt.internal.win32.OS.CallWindowProc(Native Method)
+	at org.eclipse.swt.widgets.Table.callWindowProc(Table.java:588)
+	at org.eclipse.swt.widgets.Table.callWindowProc(Table.java:454)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4846)
+	at org.eclipse.swt.widgets.Table.windowProc(Table.java:5815)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5028)
+	at org.eclipse.swt.internal.win32.OS.SendMessage(Native Method)
+	at org.eclipse.swt.widgets.Table.setItemCount(Table.java:4577)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.setProposals(CompletionProposalPopup.java:1189)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.lambda$0(CompletionProposalPopup.java:518)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:74)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.showProposals(CompletionProposalPopup.java:502)
+	at org.eclipse.jface.text.contentassist.ContentAssistant.showPossibleCompletions(ContentAssistant.java:1873)
+	at org.eclipse.jface.text.quickassist.QuickAssistAssistant.showPossibleQuickAssists(QuickAssistAssistant.java:113)
+	at org.eclipse.jdt.internal.ui.text.correction.JavaCorrectionAssistant.showPossibleQuickAssists(JavaCorrectionAssistant.java:194)
+	at org.eclipse.jdt.internal.ui.javaeditor.CompilationUnitEditor$AdaptedSourceViewer.doOperation(CompilationUnitEditor.java:201)
+	at org.eclipse.jdt.internal.ui.javaeditor.JavaSelectAnnotationRulerAction.runWithEvent(JavaSelectAnnotationRulerAction.java:101)
+	at org.eclipse.ui.texteditor.AbstractRulerActionDelegate.runWithEvent(AbstractRulerActionDelegate.java:112)
+	at org.eclipse.ui.internal.handlers.ActionDelegateHandlerProxy.execute(ActionDelegateHandlerProxy.java:281)
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:488)
+	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:485)
+	at org.eclipse.ui.actions.ContributedAction.runWithEvent(ContributedAction.java:176)
+	at org.eclipse.ui.texteditor.AbstractTextEditor$1.triggerAction(AbstractTextEditor.java:3023)
+	at org.eclipse.ui.texteditor.AbstractTextEditor$1.lambda$0(AbstractTextEditor.java:3037)
+	at org.eclipse.swt.widgets.Display.runTimer(Display.java:4166)
+	at org.eclipse.swt.widgets.Display.messageProc(Display.java:3275)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessage(Native Method)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3643)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1155)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:643)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:550)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:171)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:136)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:402)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:659)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:596)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1467)
+!SESSION 2022-12-03 10:42:50.752 -----------------------------------------------
+eclipse.buildId=4.25.0.I20220831-1800
+java.version=17.0.4.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=tr_TR
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.jface 2 0 2022-12-03 10:43:06.462
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2022-12-03 10:43:06.462
+!MESSAGE A conflict occurred for CTRL+SHIFT+T:
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		WorkbenchHandlerServiceHandler("org.eclipse.jdt.ui.navigate.open.type"),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		WorkbenchHandlerServiceHandler("org.eclipse.lsp4e.symbolinworkspace"),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2022-12-03 10:43:06.463
+!MESSAGE A conflict occurred for ALT+SHIFT+R:
+Binding(ALT+SHIFT+R,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.rename.element,Rename - Refactoring ,
+		Rename the selected element,
+		Category(org.eclipse.jdt.ui.category.refactoring,Refactor - Java,Java Refactoring Actions,true),
+		WorkbenchHandlerServiceHandler("org.eclipse.jdt.ui.edit.text.java.rename.element"),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+SHIFT+R,
+	ParameterizedCommand(Command(org.eclipse.ui.edit.rename,Rename,
+		Rename the selected item,
+		Category(org.eclipse.ui.category.file,File,null,true),
+		WorkbenchHandlerServiceHandler("org.eclipse.ui.edit.rename"),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.jface 2 0 2022-12-03 10:43:14.587
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2022-12-03 10:43:14.587
+!MESSAGE A conflict occurred for CTRL+SHIFT+C:
+Binding(CTRL+SHIFT+C,
+	ParameterizedCommand(Command(org.eclipse.tm4e.languageconfiguration.toggleLineCommentCommand,Toggle Line Comment,
+		,
+		Category(org.eclipse.tm4e.languageconfiguration.category,TM4E Language Configuration,null,true),
+		WorkbenchHandlerServiceHandler("org.eclipse.tm4e.languageconfiguration.toggleLineCommentCommand"),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.textEditorScope,,,system)
+Binding(CTRL+SHIFT+C,
+	ParameterizedCommand(Command(org.springframework.tooling.boot.ls.ToggleComment,Toggle Comment,
+		,
+		Category(org.springframework.ide.eclipse.commands,Spring Generic Text Editor,Spring Language Server Commands,true),
+		WorkbenchHandlerServiceHandler("org.springframework.tooling.boot.ls.ToggleComment"),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.textEditorScope,,,system)
+
+!ENTRY org.eclipse.egit.ui 2 0 2022-12-03 10:43:15.254
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\pelop'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-12-03 10:43:22.884
+!MESSAGE executing callback sts4.classpath.ODqQiIqR FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2022-12-03 10:43:22.886
+!MESSAGE TimeoutException
+!STACK 0
+java.util.concurrent.TimeoutException
+	at java.base/java.util.concurrent.CompletableFuture.timedGet(CompletableFuture.java:1960)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2095)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:37)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:177)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:148)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.ui 2 2 2022-12-03 10:51:46.616
+!MESSAGE Invalid property category path: org.springframework.ide.eclipse.beans.ui.properties.ProjectPropertyPage (bundle: org.springframework.ide.eclipse.xml.namespaces, propertyPage: org.springframework.ide.eclipse.beans.ui.namespaces.projectPropertyPage)
+
+!ENTRY org.eclipse.lsp4e 2 0 2022-12-03 12:44:14.654
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:386)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2096)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:70)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.eclipse.lsp4e 2 0 2022-12-03 12:50:54.403
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:386)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2096)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:70)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)

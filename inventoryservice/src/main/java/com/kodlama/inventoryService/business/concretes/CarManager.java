@@ -96,6 +96,7 @@ public class CarManager implements CarService {
 	public UpdateStateCarResponse updateStateCar(UpdateStateCarRequest updateStateCarRequest) {
 		Car car = this.carRepository.findById(updateStateCarRequest.getId()).get();
 		car.setState(updateStateCarRequest.getState());
+		this.carRepository.save(car);
 		UpdateStateCarResponse carRequest = this.modelMapperService.forResponse().map(car,
 				UpdateStateCarResponse.class);
 		return carRequest;

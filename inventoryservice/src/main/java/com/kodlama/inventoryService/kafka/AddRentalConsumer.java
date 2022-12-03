@@ -17,13 +17,14 @@ public class AddRentalConsumer {
 	private static final Logger LOGGER = LoggerFactory.getLogger(AddRentalConsumer.class);
 	private CarService carService;
 
-	@KafkaListener(topics = "${spring.kafka.topic.name}", groupId = "${spring.kafka.consumer.group-id}")
+	@KafkaListener(topics = "${spring.kafka.topic.name}", groupId = "add")
+	//${spring.kafka.consumer.group-id}
 	public void consume(RentalCreatedEvent event) {
 		LOGGER.info(String.format("Rental Create event received in stock service  => %s", event.toString()));
 
 		UpdateStateCarRequest carRequest = new UpdateStateCarRequest();
 		carRequest.setId(event.getCarId());
-		carRequest.setState(0);
+		carRequest.setState(1);
 		this.carService.updateStateCar(carRequest);
 
 	}

@@ -11,9 +11,13 @@ import com.kodlama.inventoryService.business.responses.update.UpdateModelRespons
 public interface ModelService {
 
 	List<GetAllModelResponse> getAll();
-	GetAllModelResponse getById( String id);
+
+	GetAllModelResponse getById(String id);
+
 	CreateModelResponse add(CreateModelRequest createModelRequest);
-	UpdateModelResponse update (UpdateModelRequest updateModelRequest);
+
+	UpdateModelResponse update(UpdateModelRequest updateModelRequest);
+
 	void delete(String id);
-	
+
 }

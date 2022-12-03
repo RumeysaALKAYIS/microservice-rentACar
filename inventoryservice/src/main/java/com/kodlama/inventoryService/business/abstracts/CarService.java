@@ -18,11 +18,11 @@ public interface CarService {
 
 	UpdateCarResponse update(UpdateCarRequest updateCarRequest);
 
+	void delete(String id);
+
 	GetAllCarsResponse getbyId(String id);
 
-	void delete(String id);
-	
 	UpdateStateCarResponse updateStateCar(UpdateStateCarRequest updateStateCarRequest);
-	
+
 	void checkIfCar(String id);
 }
